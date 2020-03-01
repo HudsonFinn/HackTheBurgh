@@ -2,9 +2,9 @@ import json
 import requests
 
 #print("test")
-response = requests.get("https://api.bankofscotland.co.uk/open-banking/v2.2/atms")
-atm = json.loads(response.text)
+response = requests.get("https://still-escarpment-09649.herokuapp.com/bot/sharp/")
+#atm = json.loads(response.text)
 
-print(atm["data"][0])
+print(response)
 
 #print(todos)
