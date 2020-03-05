@@ -23,7 +23,6 @@ def webhook():
 
     res = json.dumps(res, indent=4)
     print(res)
-    r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
 
@@ -32,7 +31,7 @@ def makeWebhookResult(req):
     #    return {}
     result = req["queryResult"]
     parameters = result["parameters"]
-    
+
     """
     d={
         #"Bank of Ireland (UK) plc":"https://api.bankofscotland.co.uk/open-banking/v2.2/atms",
@@ -49,7 +48,7 @@ def makeWebhookResult(req):
         "Santander UK PLC":"https://openbanking.santander.co.uk/sanuk/external/open-banking/v2.2/atms",
         "Ulster Bank North":"https://openapi.ulsterbank.co.uk/open-banking/v2.2/atms"
     }
-    
+
     """
     d1={
         "Bank Of Scotland":"atms/scotland.json",
@@ -95,7 +94,7 @@ def makeWebhookResult(req):
             "source": "BankRates",
             "fulfillmentText":speech
         }
-        
+
     if "age" in parameters.keys():
         n=parameters['age']
         #speech="you are "+str(int(n))+" years old"
@@ -113,7 +112,7 @@ def makeWebhookResult(req):
         #cost = {'Federal bank':'6.85%', 'Ceva':'6.75%'}
         #zone ='Federal Bank'
         #speech = "The interest rate of " + zone + " is " + str(cost[zone])
-        
+
         #
         #q=atm["data"][0]["Brand"][0]["ATM"][0]["Location"]["PostalAddress"]["GeoLocation"]["GeographicCoordinates"]["Latitude"]
     d3={
@@ -170,7 +169,7 @@ def makeWebhookResult(req):
                             if(d5[j]<=min):
                                 name=j + "is the highest rated bank offering that option"
                                 min=d5[j]
-        
+
         speech= name
         print("Response:")
         print(speech)
@@ -182,7 +181,7 @@ def makeWebhookResult(req):
             "source": "BankRates",
             "fulfillmentText":speech
         }
-      
+
 
     if "zip-code" in parameters.keys():
         getcode = parameters["zip-code"]
@@ -228,8 +227,8 @@ def makeWebhookResult(req):
             "source": "BankRates",
             "fulfillmentText":speech
         }
-    
-    
+
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
